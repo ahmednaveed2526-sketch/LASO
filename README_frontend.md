@@ -1,45 +1,4 @@
-# LASO App - Frontend Documentation
-
-This is the complete, light-themed, mobile-first frontend for **LASO** (Sri Lanka's Service Locator Application). The application is built using standard HTML5, CSS3 (Vanilla), and Vanilla ES modules.
-
----
-
-## How to Run the Frontend Locally
-
-Since the JavaScript uses ES Modules (`import`/`export`), you **must** serve the files using a local HTTP server (running them directly from `file://` inside a browser will block module loading due to CORS policies).
-
-### Option 1: VS Code Live Server (Recommended)
-1. Open the directory `LASO moble app/` in VS Code.
-2. Click **Go Live** in the bottom-right status bar (or right-click `frontend/index.html` and select **Open with Live Server**).
-3. The app will launch in your browser (typically at `http://127.0.5.1:5500/frontend/index.html`).
-
-### Option 2: Python HTTP Server
-1. Open terminal inside the `frontend/` directory.
-2. Run the following command:
-   ```bash
-   python -m http.server 8080
-   ```
-3. Open `http://localhost:8080` in your browser.
-
-### Option 3: Node.js http-server
-1. If you have Node installed, run:
-   ```bash
-   npx http-server ./frontend -p 8080
-   ```
-2. Open `http://localhost:8080` in your browser.
-
----
-
-## Design Systems & Themes (Light Theme Specs)
-
-- **Backgrounds**: `#ffffff` (Primary) and `#f8f9fa` (Secondary)
-- **Cards**: White with 12px/20px border radius and soft ambient shadows (`box-shadow: 0 2px 8px rgba(0,0,0,0.05)`)
-- **Primary Buttons & Highlights**: Deep Sky Blue (`#0077b6`) with white text. Hover state shifts to `#005f92`.
-- **Text Labels & Typography**: Primary Slate (`#1e2a3a`), Secondary Slate (`#5a6c7d`), font family **Inter** from Google Fonts.
-- **Scrollbar Hiding**: Content sections scroll smoothly on mobile swipe or mouse scroll, with the visual scrollbars hidden.
-- **Fixed Emojis**: System Unicode emojis are utilized for high contrast and modern scaling (e.g., 🏠, 🔍, 💬, 👤, 🧰, ⚡, 🔨, 🧱, 🎨, 📺, ❄️, 🧹).
-
----
+## LASO front-end end points
 
 ## Backend API Integration Contracts
 
