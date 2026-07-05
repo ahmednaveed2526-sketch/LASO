@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LASO - Create Account</title>
+  <link rel="stylesheet" href="../../styles/main.css">
+  <style>
+    .register-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background-color: var(--bg-primary);
+    }
+    .gps-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      align-items: flex-end;
+      gap: 8px;
+    }
+  </style>
+  <script type="module" src="../../js/auth.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="header-action" onclick="window.location.href='user-type.html'" aria-label="Back">
+        <span style="font-size: 20px; font-weight: bold; line-height: 1;">←</span>
+      </button>
+      <a href="../../index.html" class="app-logo" style="text-decoration: none;">
+        <img src="../../assets/logo.png" alt="LASO Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" style="height: 30px; max-height: 30px; object-fit: contain;">
+        <span class="logo-text" style="display: none;">LASO<span>.</span></span>
+      </a>
+      <div style="width: 36px;"></div>
+    </header>
+
+    <!-- Scrollable Form Container -->
+    <div class="scrollable">
+      <div class="animate-fade-in">
+        <h2 id="register-title" style="font-size: 24px; font-weight: 700; margin-bottom: 6px;">Create Account</h2>
+        <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 24px;">Please fill in the details below to register.</p>
+
+        <div id="error-alert" style="display: none; background-color: #ffe3e3; color: #d63031; padding: 12px; border-radius: var(--radius-sm); font-size: 14px; margin-bottom: 16px; font-weight: 500;"></div>
+
+        <form id="register-form">
+          <!-- Common Fields -->
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="tel" id="phone" class="form-control" placeholder="07XXXXXXXX" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+          </div>
+
+          <div class="form-group">
+            <label for="district" class="form-label">District (Sri Lanka)</label>
+            <select id="district" class="form-control" required>
+              <option value="" disabled selected>Select your district</option>
+              <option value="Colombo">Colombo</option>
+              <option value="Gampaha">Gampaha</option>
+              <option value="Kalutara">Kalutara</option>
+              <option value="Kandy">Kandy</option>
+              <option value="Matale">Matale</option>
+              <option value="Nuwara Eliya">Nuwara Eliya</option>
+              <option value="Galle">Galle</option>
+              <option value="Matara">Matara</option>
+              <option value="Hambantota">Hambantota</option>
+              <option value="Jaffna">Jaffna</option>
+              <option value="Kilinochchi">Kilinochchi</option>
+              <option value="Mannar">Mannar</option>
+              <option value="Vavuniya">Vavuniya</option>
+              <option value="Mullaitivu">Mullaitivu</option>
+              <option value="Batticaloa">Batticaloa</option>
+              <option value="Ampara">Ampara</option>
+              <option value="Trincomalee">Trincomalee</option>
+              <option value="Kurunegala">Kurunegala</option>
+              <option value="Puttalam">Puttalam</option>
+              <option value="Anuradhapura">Anuradhapura</option>
+              <option value="Polonnaruwa">Polonnaruwa</option>
+              <option value="Badulla">Badulla</option>
+              <option value="Moneragala">Moneragala</option>
+              <option value="Ratnapura">Ratnapura</option>
+              <option value="Kegalle">Kegalle</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="address" class="form-label">Specific Address (Optional)</label>
+            <input type="text" id="address" class="form-control" placeholder="123 Galle Rd, Colombo 3">
+          </div>
+
+          <!-- Provider-Only Fields -->
+          <div id="provider-only-fields" style="display: none;">
+            <div class="form-group">
+              <label for="service-type" class="form-label">Service Category</label>
+              <select id="service-type" class="form-control">
+                <option value="" disabled selected>Select service you offer</option>
+                <option value="plumbing">🧰 Plumbing</option>
+                <option value="electrical">⚡ Electrical</option>
+                <option value="carpentry">🔨 Carpentry</option>
+                <option value="masonry">🧱 Masonry</option>
+                <option value="painting">🎨 Painting</option>
+                <option value="appliance">📺 Appliance Repair</option>
+                <option value="ac">❄️ AC Repair & Maintenance</option>
+                <option value="cleaning">🧹 Cleaning Services</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">GPS Coordinates</label>
+              <div class="gps-row">
+                <div>
+                  <span class="text-xs text-secondary">Latitude</span>
+                  <input type="number" id="lat" class="form-control" step="any" placeholder="Latitude" style="padding: 10px 8px; font-size: 13px;">
+                </div>
+                <div>
+                  <span class="text-xs text-secondary">Longitude</span>
+                  <input type="number" id="lon" class="form-control" step="any" placeholder="Longitude" style="padding: 10px 8px; font-size: 13px;">
+                </div>
+                <button type="button" id="btn-gps" class="btn btn-secondary" style="padding: 10px 12px; margin-top: 18px; font-size: 13px; height: 42px;">
+                  🎯 Get GPS
+                </button>
+              </div>
+              <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Provides distance calculation. If left empty, default district center will be used.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="description" class="form-label">Short Description of Services</label>
+              <textarea id="description" class="form-control" placeholder="Describe your experience, rates, or general service offers..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 16px;">Register</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <p style="font-size: 14px; color: var(--text-secondary);">
+            Already registered? <a href="login.html" style="color: var(--primary-color); font-weight: 600; text-decoration: none;">Log In</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

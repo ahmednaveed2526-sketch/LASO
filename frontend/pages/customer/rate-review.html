@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LASO - Rate & Review</title>
+  <link rel="stylesheet" href="../../styles/main.css">
+  <style>
+    /* Premium Interactive Star Rating */
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      font-size: 40px;
+      gap: 12px;
+      margin: 16px 0 24px 0;
+    }
+    .star-rating input {
+      display: none;
+    }
+    .star-rating label {
+      color: #ced4da;
+      cursor: pointer;
+      transition: color 0.15s ease, transform 0.1s ease;
+    }
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input:checked ~ label {
+      color: #ffb703;
+    }
+    .star-rating label:active {
+      transform: scale(0.9);
+    }
+  </style>
+  <script type="module" src="../../js/customer.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Scrollable Content -->
+    <div class="scrollable">
+      <div class="animate-fade-in">
+        
+        <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Write a Review</h2>
+        <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+          Share your experience with <strong id="provider-name-review" style="color: var(--text-primary);">Provider</strong> to help others make informed decisions.
+        </p>
+
+        <div id="error-alert" style="display: none; background-color: #ffe3e3; color: #d63031; padding: 12px; border-radius: var(--radius-sm); font-size: 14px; margin-bottom: 16px; font-weight: 500;"></div>
+
+        <form id="review-form">
+          
+          <!-- Stars Selection -->
+          <div class="form-group text-center">
+            <label class="form-label" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary);">Tap to Rate</label>
+            <div class="star-rating">
+              <input type="radio" id="star5" name="rating" value="5">
+              <label for="star5" title="5 stars">★</label>
+              
+              <input type="radio" id="star4" name="rating" value="4">
+              <label for="star4" title="4 stars">★</label>
+              
+              <input type="radio" id="star3" name="rating" value="3">
+              <label for="star3" title="3 stars">★</label>
+              
+              <input type="radio" id="star2" name="rating" value="2">
+              <label for="star2" title="2 stars">★</label>
+              
+              <input type="radio" id="star1" name="rating" value="1">
+              <label for="star1" title="1 star">★</label>
+            </div>
+          </div>
+
+          <!-- Comment Textarea -->
+          <div class="form-group">
+            <label for="comment" class="form-label">Your Review Comment</label>
+            <textarea id="comment" class="form-control" placeholder="Describe the quality of work, cleanliness, punctuality, and pricing..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 16px;">Submit Review</button>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div id="nav-container"></div>
+  </div>
+</body>
+</html>

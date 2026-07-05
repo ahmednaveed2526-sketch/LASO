@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LASO - My Profile</title>
+  <link rel="stylesheet" href="../../styles/main.css">
+  <script type="module">
+    import { checkAuth, clearSession, SERVICES } from '../../js/utils.js';
+    import { initHeader, initBottomNav, getPath } from '../../js/components.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = checkAuth();
+      if (!user) return;
+
+      initHeader('Profile', false);
+      initBottomNav('profile');
+
+      document.getElementById('profile-name').textContent = user.name;
+      document.getElementById('profile-role').textContent = user.userType === 'customer' ? 'Customer' : 'Service Provider';
+      document.getElementById('profile-email').textContent = user.email;
+      document.getElementById('profile-phone').textContent = user.phone || 'Not specified';
+      document.getElementById('profile-district').textContent = user.district;
+      document.getElementById('profile-address').textContent = user.address || 'Not specified';
+
+      const providerSection = document.getElementById('provider-specific-section');
+      const editProfileBtn = document.getElementById('btn-edit-profile');
+
+      if (user.userType === 'provider') {
+        providerSection.style.display = 'block';
+        editProfileBtn.style.display = 'block';
+        
+        // Load description and category details from mock DB
+        const providers = JSON.parse(localStorage.getItem('laso_mock_providers')) || [];
+        const providerData = providers.find(p => p.id === user.userId);
+        if (providerData) {
+          const category = SERVICES.find(s => s.id === providerData.serviceType);
+          document.getElementById('profile-category').textContent = `${category ? category.emoji : '🛠️'} ${category ? category.name : providerData.serviceType}`;
+          document.getElementById('profile-desc').textContent = providerData.description || 'No description.';
+        }
+      }
+
+      document.getElementById('btn-logout').addEventListener('click', () => {
+        clearSession();
+        window.location.href = getPath('pages/auth/login.html');
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Scrollable Content -->
+    <div class="scrollable">
+      <div class="animate-fade-in">
+        
+        <!-- User Badge Profile Info Card -->
+        <div class="card text-center" style="padding: 24px 16px; margin-bottom: 20px;">
+          <div style="font-size: 48px; margin-bottom: 6px;">👤</div>
+          <h2 id="profile-name" style="font-size: 20px; font-weight: 700; color: var(--text-primary);">User Name</h2>
+          <span id="profile-role" class="badge badge-info" style="margin-top: 6px;">Customer</span>
+        </div>
+
+        <!-- Details Card -->
+        <div class="card">
+          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">Account Details</h3>
+          <div style="font-size: 13px; display: flex; flex-direction: column; gap: 10px;">
+            <div><span style="color: var(--text-secondary);">Email:</span> <strong id="profile-email" style="color: var(--text-primary);">email@domain.com</strong></div>
+            <div><span style="color: var(--text-secondary);">Phone:</span> <strong id="profile-phone" style="color: var(--text-primary);">07XXXXXXXX</strong></div>
+            <div><span style="color: var(--text-secondary);">District:</span> <strong id="profile-district" style="color: var(--text-primary);">Colombo</strong></div>
+            <div><span style="color: var(--text-secondary);">Address:</span> <strong id="profile-address" style="color: var(--text-primary);">Specific Address</strong></div>
+          </div>
+        </div>
+
+        <!-- Provider Specific Card -->
+        <div id="provider-specific-section" style="display: none;" class="card">
+          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">Service Offering</h3>
+          <div style="font-size: 13px; display: flex; flex-direction: column; gap: 10px;">
+            <div><span style="color: var(--text-secondary);">Service Category:</span> <strong id="profile-category" style="color: var(--text-primary);">🧰 Plumbing</strong></div>
+            <div>
+              <span style="color: var(--text-secondary);">Description:</span>
+              <p id="profile-desc" style="color: var(--text-primary); margin-top: 4px; line-height: 1.4; font-style: italic;"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex-col" style="gap: 12px; margin-top: 24px;">
+          <button id="btn-edit-profile" class="btn btn-secondary" style="display: none; margin-bottom: 12px;" onclick="window.location.href='../provider/edit-profile.html'">
+            ⚙️ Edit Provider Profile
+          </button>
+          <button id="btn-logout" class="btn btn-primary" style="background-color: #d63031;">
+            🚪 Log Out
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div id="nav-container"></div>
+  </div>
+</body>
+</html>

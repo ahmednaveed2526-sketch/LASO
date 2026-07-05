@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LASO Provider - Dashboard</title>
+  <link rel="stylesheet" href="../../styles/main.css">
+  <script type="module" src="../../js/provider.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Scrollable Content -->
+    <div class="scrollable">
+      <div class="animate-fade-in">
+        
+        <!-- Profile Summary and Statistics -->
+        <div id="provider-summary-card" class="card" style="padding: 20px 16px; margin-bottom: 20px;">
+          <!-- Loaded dynamically by provider.js -->
+          <div style="text-align: center; padding: 20px 0;">
+            <span style="font-size: 24px;">⌛</span>
+            <p style="color: var(--text-secondary); margin-top: 8px;">Loading profile...</p>
+          </div>
+        </div>
+
+        <!-- Recent Reviews List -->
+        <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 10px; padding-left: 4px;">Recent Customer Reviews</h3>
+        <div id="reviews-summary-list" class="card" style="margin-bottom: 20px;">
+          <!-- Loaded dynamically by provider.js -->
+          <div style="text-align: center; padding: 20px 0;">
+            <p style="color: var(--text-secondary); font-size: 13px;">Loading feedback...</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div id="nav-container"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LASO - Log In</title>
+  <link rel="stylesheet" href="../../styles/main.css">
+  <script type="module" src="../../js/auth.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="header-action" onclick="window.location.href='user-type.html'" aria-label="Back">
+        <span style="font-size: 20px; font-weight: bold; line-height: 1;">←</span>
+      </button>
+      <a href="../../index.html" class="app-logo" style="text-decoration: none;">
+        <img src="../../assets/logo.png" alt="LASO Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" style="height: 30px; max-height: 30px; object-fit: contain;">
+        <span class="logo-text" style="display: none;">LASO<span>.</span></span>
+      </a>
+      <div style="width: 36px;"></div>
+    </header>
+
+    <!-- Content -->
+    <div class="scrollable" style="display: flex; flex-direction: column; justify-content: center; padding-bottom: 20px;">
+      <div class="animate-fade-in" style="width: 100%;">
+        <h2 style="font-size: 26px; font-weight: 700; margin-bottom: 6px;">Welcome Back</h2>
+        <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 28px;">Log in to locate providers or manage your profile.</p>
+
+        <div id="error-alert" style="display: none; background-color: #ffe3e3; color: #d63031; padding: 12px; border-radius: var(--radius-sm); font-size: 14px; margin-bottom: 16px; font-weight: 500;"></div>
+
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 24px;">
+          <p style="font-size: 14px; color: var(--text-secondary);">
+            New to LASO? <a href="user-type.html" style="color: var(--primary-color); font-weight: 600; text-decoration: none;">Create Account</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

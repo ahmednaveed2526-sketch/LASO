@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LASO - Choose Account Type</title>
+  <link rel="stylesheet" href="../../styles/main.css">
+  <style>
+    .type-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 24px;
+      gap: 20px;
+      background-color: var(--bg-secondary);
+    }
+    .type-card {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      background-color: var(--card-bg);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-normal);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .type-card:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+    }
+    .type-icon {
+      font-size: 48px;
+    }
+    .type-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .type-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="type-container">
+      <div style="text-align: center; margin-bottom: 10px;">
+        <h1 class="app-logo" style="font-size: 36px; justify-content: center; margin-bottom: 6px; gap: 8px;">
+          <img src="../../assets/logo.png" alt="LASO Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" style="height: 48px; max-height: 48px; object-fit: contain;">
+          <span class="logo-text" style="display: none;">LASO<span>.</span></span>
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 14px;">Select your account type to proceed</p>
+      </div>
+
+      <div class="type-card" onclick="window.location.href='register.html?type=customer'" role="button" tabindex="0">
+        <div class="type-icon">🔍</div>
+        <div class="type-title">I need a Service</div>
+        <div class="type-desc">Find and hire plumbers, electricians, carpenters and other professionals in your district.</div>
+      </div>
+
+      <div class="type-card" onclick="window.location.href='register.html?type=provider'" role="button" tabindex="0">
+        <div class="type-icon">🛠️</div>
+        <div class="type-title">I offer a Service</div>
+        <div class="type-desc">Register as a service provider, display your skills, calculate distances, and chat with customers.</div>
+      </div>
+
+      <div style="text-align: center; margin-top: 10px;">
+        <p style="font-size: 14px; color: var(--text-secondary);">
+          Already have an account? <a href="login.html" style="color: var(--primary-color); font-weight: 600; text-decoration: none;">Log In</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
