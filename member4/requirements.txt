@@ -1,0 +1,15 @@
+# requirements.txt - Python Dependencies for Member 4
+
+# Core Framework
+Flask==2.3.2
+Flask-CORS==4.0.0
+
+# Environment Configuration
+python-dotenv==1.0.0
+
+# For production password hashing (optional)
+# bcrypt==4.0.1
+# PyJWT==2.8.0
+
+# For testing (optional)
+# pytest==7.4.0
