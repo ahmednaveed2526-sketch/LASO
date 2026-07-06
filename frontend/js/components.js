@@ -26,22 +26,21 @@ export function initHeader(title = '', showBack = false) {
   }
 
   let rightActionHtml = '';
-  if (title) {
-    rightActionHtml = `<span style="font-size: 13px; font-weight: 600; color: var(--text-secondary); background: var(--bg-secondary); padding: 4px 8px; border-radius: var(--radius-sm);">${title}</span>`;
-  } else {
+  if (title === 'Messages') {
     rightActionHtml = `
-      <button class="header-action" id="header-bell-btn" aria-label="Notifications" style="font-size: 18px; position: relative; background: none; border: none; cursor: pointer;">
-        🔔
-        <span style="position: absolute; top: 6px; right: 6px; width: 7px; height: 7px; background-color: #d63031; border-radius: 50%; border: 1.5px solid var(--bg-primary);"></span>
+      <button class="header-action" id="header-bell-btn" aria-label="Notifications">
+        <span style="font-size: 20px; font-weight: bold; line-height: 1;">🔔</span>
       </button>
     `;
+  } else {
+    rightActionHtml = `<div style="width: 36px"></div>`; // spacer
   }
   
   headerContainer.innerHTML = `
     <header class="app-header">
       ${backBtnHtml}
       <a href="${getPath('index.html')}" class="app-logo" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
-        <img src="${getPath('assets/logo.png')}" alt="LASO Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" style="height: 30px; max-height: 30px; object-fit: contain;">
+        <img src="${getPath('assets/LASO.png')}" alt="LASO Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" style="height: 30px; max-height: 30px; object-fit: contain;">
         <span class="logo-text" style="display: none;">LASO<span>.</span></span>
       </a>
       <div style="min-width: 36px; display: flex; justify-content: flex-end; align-items: center;">
@@ -50,25 +49,12 @@ export function initHeader(title = '', showBack = false) {
     </header>
   `;
 
-  // Attach Bell click listener
-  const bellBtn = document.getElementById('header-bell-btn');
-  if (bellBtn) {
-    const notificationsList = [
-      { title: 'New message 💬', msg: 'Amal Perera: "I can come by tomorrow at 10 AM"', icon: '💬' },
-      { title: 'Job accepted ⚡', msg: 'Nimal Silva has accepted your repair inquiry.', icon: '⚡' },
-      { title: 'Review left ⭐', msg: 'Azaam Customer rated your service 5 stars!', icon: '⭐' },
-      { title: 'System Alert 🔔', msg: 'GPS coordinates successfully calibrated.', icon: '🎯' }
-    ];
-    bellBtn.addEventListener('click', () => {
-      const item = notificationsList[Math.floor(Math.random() * notificationsList.length)];
-      showNotification(item.title, item.msg, item.icon);
-    });
-  }
+
 }
 
 // Show Premium Glassmorphic Notification Toast
-export function showNotification(title, message, icon = '🔔') {
-  const appContainer = document.querySelector('.app-container');
+export function showToast(title, message, icon = 'ℹ️') {
+  const appContainer = document.getElementById('app-container');
   if (!appContainer) return;
 
   // Remove existing toast if visible
