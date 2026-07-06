@@ -1,8 +1,0 @@
-# requirements.txt
-# Python 3.8+ required
-
-# No external dependencies required for this implementation
-# All code uses Python standard library
-
-# For testing:
-unittest  # Built-in Python module
