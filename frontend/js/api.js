@@ -2,7 +2,7 @@ import { DISTRICTS, calculateDistance } from './utils.js';
 
 // Configuration
 export const API_BASE_URL = 'http://localhost:8000'; // Default Python backend port
-export const USE_MOCK_API = true; // Toggle to false to enforce real API requests
+export const USE_MOCK_API = false; // Toggle to false to enforce real API requests
 
 // --- Mock Database Initializer ---
 const MOCK_PROVIDERS_KEY = 'laso_mock_providers';
